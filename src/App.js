@@ -1,6 +1,18 @@
-import CategoriesMenu from './components/categories-menu/categories-menu.component';
+import { Routes, Route } from 'react-router-dom';
+import Home from './routes/home/home.component';
+import Navigation from './routes/navigation/navigation.component';
+
+const Shop = () => <h3>I am the shop page</h3>;
+
 const App = () => {
-  return <CategoriesMenu />;
+  return (
+    <Routes>
+      <Route path="/" element={<Navigation />}>
+        <Route index element={<Home />} />
+        <Route path="shop" element={<Shop />} />
+      </Route>
+    </Routes>
+  );
 };
 
 export default App;

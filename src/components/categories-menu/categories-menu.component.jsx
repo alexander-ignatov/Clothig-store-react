@@ -29,7 +29,7 @@ const CategoriesMenu = () => {
       imageUrl: 'https://i.ibb.co/R70vBrQ/men.png',
     },
   ];
-
+  //asidguas
   return (
     <div className="categories-container">
       {categories.map(category => (

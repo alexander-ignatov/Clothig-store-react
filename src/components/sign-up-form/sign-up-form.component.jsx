@@ -1,7 +1,7 @@
+import { SignUpContainer } from './sign-up-form.styles';
 import { useState } from 'react';
 import FormInput from '../form-input/form-input.component';
 import Button from '../button/button.component';
-import './sign-up-form.styles.scss';
 import {
   createAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
@@ -48,7 +48,7 @@ const SignUpForm = () => {
   };
 
   return (
-    <div className="sign-up-container">
+    <SignUpContainer>
       <h1>I don't have an account</h1>
       <h2>Sign up with email and password</h2>
       <form onSubmit={handleSubmit}>
@@ -94,7 +94,7 @@ const SignUpForm = () => {
         />
         <Button type="submit">Sign Up</Button>
       </form>
-    </div>
+    </SignUpContainer>
   );
 };
 

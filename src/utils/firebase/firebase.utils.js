@@ -28,9 +28,10 @@ const firebaseConfig = {
   appId: '1:276417235396:web:31906db8f63e44d8f9fc91',
 };
 
-// const firebaseApp =
-initializeApp(firebaseConfig);
+const firebaseApp = initializeApp(firebaseConfig);
+
 const googleProvider = new GoogleAuthProvider();
+
 googleProvider.setCustomParameters({
   prompt: 'select_account',
 });
@@ -75,9 +76,7 @@ export const createUserDocumentFromAuth = async (
 ) => {
   if (!userAuth) return;
   const userDocRef = doc(db, 'users', userAuth.uid);
-  // console.log(userDocRef);
   const userSnapshot = await getDoc(userDocRef);
-  // console.log(userSnapshot);
 
   //If user data does not exist
   if (!userSnapshot.exists()) {

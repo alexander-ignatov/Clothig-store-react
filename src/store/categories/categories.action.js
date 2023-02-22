@@ -1,6 +1,6 @@
 import { createAction } from "../../utils/firebase/reducer/reducer.utils";
 import CATEGORIES_ACTION_TYPES from "./categories.types";
 
-const setCategoriesMap = categoriesMap => createAction(CATEGORIES_ACTION_TYPES.SET_CATEGORIES_MAP, categoriesMap)
+const setCategories = categoriesArray => createAction(CATEGORIES_ACTION_TYPES.SET_CATEGORIES, categoriesArray)
 
-export default setCategoriesMap
+export default setCategories

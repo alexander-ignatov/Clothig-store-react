@@ -3,33 +3,29 @@ import {
   legacy_createStore as createStore,
   applyMiddleware,
 } from 'redux';
-// import logger from 'redux-logger';
+import logger from 'redux-logger';
 
+import persistReducer from 'redux-persist/es/persistReducer';
+import persistStore from 'redux-persist/es/persistStore';
+import storage from 'redux-persist/lib/storage';
+
+// import loggerMiddleware from './middleware/logger';
 import rootReducer from './root-reducer';
 
-//Middlewares to log out the state before hitting the reducer
+const middleWares = [process.env.NODE_ENV !== 'production' && logger].filter(Boolean)
 
-/*
-Custom middleware because the redux one is hard for debugging. THe positive here is that everything os sequential.
-If there isn't an action type in most cases it means that the action just isn't for this middleware
-If there is then we log out what we need, pass the action forward and THEN log out the next state
-*/
-const loggerMiddleware = store => next => action => {
-  if(!action.type) return next(action)
+const composedEnhancer = (process.env.NODE_ENV !== 'production' && window && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose
+const composedEnhancers = composedEnhancer(applyMiddleware(...middleWares))
 
-  console.log('type: ', action.type);
-  console.log('payload: ', action.payload);
-  console.log('state: ', store.getState());
-
-  next(action)
-
-  console.log('next state: ', store.getState());
+const persistConfig = {
+  key: 'root',
+  storage,
+  blacklist: ['user']
 }
 
+const persistedReducer = persistReducer(persistConfig, rootReducer)
 
-const middleWares = [loggerMiddleware]
-const composedEnhancers = compose(applyMiddleware(...middleWares))
-
-const store = createStore(rootReducer, undefined, composedEnhancers);
+const store = createStore(persistedReducer, undefined, composedEnhancers);
+export const persistor = persistStore(store)
 
 export default store

@@ -1,6 +1,14 @@
 import { createAction } from "../../utils/firebase/reducer/reducer.utils";
 import USER_ACTION_TYPES from "./user.types";
 
-const setCurrentUser = user => createAction(USER_ACTION_TYPES.SET_CURRENT_USER, user);
+export const setCurrentUser = user => createAction(USER_ACTION_TYPES.SET_CURRENT_USER, user);
 
-export default setCurrentUser
+export const checkUserSession = () => createAction(USER_ACTION_TYPES.CHECK_USER_SESSION)
+
+export const googleSignInStart = () => createAction(USER_ACTION_TYPES.GOOGLE_SIGN_IN_START)
+
+export const emailSignInStart = (email, password) => createAction(USER_ACTION_TYPES.EMAIL_SIGN_IN_START, {email, password})
+
+export const signInSucces = (user) => createAction(USER_ACTION_TYPES.SIGN_IN_SUCCES, user)
+
+export const signInFailure = (error) => createAction(USER_ACTION_TYPES.SIGN_IN_FAILURE, error)

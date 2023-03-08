@@ -9,6 +9,6 @@ export const googleSignInStart = () => createAction(USER_ACTION_TYPES.GOOGLE_SIG
 
 export const emailSignInStart = (email, password) => createAction(USER_ACTION_TYPES.EMAIL_SIGN_IN_START, {email, password})
 
-export const signInSucces = (user) => createAction(USER_ACTION_TYPES.SIGN_IN_SUCCES, user)
+export const signInSuccess = (user) => createAction(USER_ACTION_TYPES.SIGN_IN_SUCCES, user)
 
 export const signInFailure = (error) => createAction(USER_ACTION_TYPES.SIGN_IN_FAILURE, error)

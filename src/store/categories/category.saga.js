@@ -17,6 +17,6 @@ export function* onFetchCategories(){
   yield takeLatest(CATEGORIES_ACTION_TYPES.FETCH_CATEGORIES_START, fetchCategoriesAsync)
 }
 
-export function* categoriesSaga(){
+export function* categoriesSagas(){
   yield all([call(onFetchCategories)])
 } 

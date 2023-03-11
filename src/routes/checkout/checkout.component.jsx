@@ -6,13 +6,17 @@ import {
 } from './checkout.styles.jsx';
 
 import CheckoutItem from '../../components/checkout-item/checkout-item.component';
+import PaymentForm from '../../components/payment-form/payment-form.component.jsx';
 
-import { selectCartItems, selectCartTotal } from '../../store/cart/cart.selector.js';
+import {
+  selectCartItems,
+  selectCartTotal,
+} from '../../store/cart/cart.selector.js';
 import { useSelector } from 'react-redux';
 
 const Checkout = () => {
-  const cartItems = useSelector(selectCartItems)
-  const cartTotal = useSelector(selectCartTotal)
+  const cartItems = useSelector(selectCartItems);
+  const cartTotal = useSelector(selectCartTotal);
 
   return (
     <CheckoutContainer>
@@ -40,6 +44,7 @@ const Checkout = () => {
       ))}
 
       <Total>Total: ${cartTotal}</Total>
+      <PaymentForm />
     </CheckoutContainer>
   );
 };

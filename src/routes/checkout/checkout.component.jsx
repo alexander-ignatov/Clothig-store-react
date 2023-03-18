@@ -6,7 +6,7 @@ import {
 } from './checkout.styles.jsx';
 
 import CheckoutItem from '../../components/checkout-item/checkout-item.component';
-import PaymentForm from '../../components/payment-form/payment-form.component.jsx';
+import PaymentForm from '../../components/payment-form/payment-form.component';
 
 import {
   selectCartItems,

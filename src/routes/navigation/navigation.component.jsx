@@ -14,7 +14,7 @@ import { ReactComponent as CrwnLogo } from '../../assets/crown.svg';
 
 import { signOutStart } from '../../store/user/user.action';
 
-import selectCurrentUser from '../../store/user/user.selector';
+import { selectCurrentUser } from '../../store/user/user.selector';
 import { selectIsCartOpen } from '../../store/cart/cart.selector';
 
 import CartIcon from '../../components/cart-icon/cart-icon.component';
@@ -25,7 +25,7 @@ const Navigation = () => {
   const currentUser = useSelector(selectCurrentUser);
   const isCartOpen = useSelector(selectIsCartOpen);
 
-  const signOutUser = () => dispatch(signOutStart())
+  const signOutUser = () => dispatch(signOutStart());
 
   return (
     <Fragment>

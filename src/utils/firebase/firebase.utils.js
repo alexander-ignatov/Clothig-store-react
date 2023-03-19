@@ -20,7 +20,7 @@ import {
 } from 'firebase/firestore';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyB0PvbmdD69nMK5hKtRFjjWoGqq2ub7fe0',
+  apiKey: process.env.REACT_APP_FIREBASE_KEY,
   authDomain: 'clothing-store-db-b16cc.firebaseapp.com',
   projectId: 'clothing-store-db-b16cc',
   storageBucket: 'clothing-store-db-b16cc.appspot.com',
@@ -37,7 +37,8 @@ googleProvider.setCustomParameters({
 });
 
 export const auth = getAuth();
-export const signInWithGooglePopup = () => signInWithPopup(auth, googleProvider);
+export const signInWithGooglePopup = () =>
+  signInWithPopup(auth, googleProvider);
 export const db = getFirestore();
 
 export const addCollectionAndDocuments = async (
@@ -114,7 +115,7 @@ export const getCurrentUser = () => {
     const unsubscribe = onAuthStateChanged(
       auth,
       userAuth => {
-        unsubscribe(); 
+        unsubscribe();
         resolve(userAuth);
       },
       reject

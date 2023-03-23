@@ -1,11 +1,17 @@
-import CART_ACTION_TYPES from "./cart.types";
+import { AnyAction } from 'redux';
+import { CART_ACTION_TYPES, CartItem } from './cart.types';
 
-const INITIAL_STATE = {
+export type CartState = {
+  readonly isCartOpen: boolean;
+  readonly cartItems: CartItem[]
+}
+
+const INITIAL_STATE: CartState = {
   isCartOpen: false,
-  cartItems: []
+  cartItems: [],
 };
 
-const cartReducer = (state = INITIAL_STATE, action={}) => {
+const cartReducer = (state = INITIAL_STATE, action = {} as AnyAction) => {
   const { type, payload } = action;
 
   switch (type) {
@@ -24,37 +30,7 @@ const cartReducer = (state = INITIAL_STATE, action={}) => {
   }
 };
 
-export default cartReducer
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+export default cartReducer;
 
 // import CART_ACTION_TYPES from "./cart.types";
 
